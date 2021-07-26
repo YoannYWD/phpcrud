@@ -22,7 +22,10 @@
             <a class="nav-link" aria-current="page" href="/phpcrud">Accueil</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/phpcrud/create.php">Créer mon équipe</a>
+            <a class="nav-link" href="/phpcrud/create.php">Ajouter un joueur</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/phpcrud/edit.php">Modifier un joueur</a>
             </li>
         </ul>
         </div>

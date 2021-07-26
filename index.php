@@ -32,7 +32,7 @@ include "./head.php";
             <td><?= $joueur->numero; ?></td>
             <td><?= $joueur->position; ?></td>
             <td>
-              <a href="" class="btn btn-info">Editer</a>
+              <a href="edit.php?id=<?= $joueur->id; ?>" class="btn btn-info">Editer</a>
               <a href="" class='btn btn-danger'>Supprimer</a>
             </td>
           </tr>
