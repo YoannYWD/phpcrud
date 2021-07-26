@@ -1,5 +1,6 @@
 <?php
 require "./db.php";
+$message = "";
 if(isset($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"])) {
     $nom = $_POST["nom"];
     $numero = $_POST["numero"];
@@ -7,7 +8,7 @@ if(isset($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"]))
     $sql = "INSERT INTO joueur (nom, numero, position) VALUES (:nom, :numero, :position)";
     $statement = $connection->prepare($sql);
     if($statement->execute([":nom" => $nom, ":numero" => $numero, ":position" => $position])) {
-        print "Joueur ajouté";
+        $message = "Joueur ajouté avec succès";
     }
 }
 ?>
@@ -22,6 +23,12 @@ include "./head.php";
         <div class="col-6 offset-3 my-5">
             <h1 class="text-center mb-5">Ajouter un joueur</h1>
             
+            <?php if(!empty($message)): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $message; ?>
+                </div>
+            <?php endif;?>     
+
             <form method="post">
               <div class="mb-3">
                 <label>Nom</label>
