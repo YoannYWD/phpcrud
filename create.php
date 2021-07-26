@@ -7,7 +7,13 @@ if(isset($_POST["nom"]) && isset($_POST["numero"]) && isset($_POST["position"]))
     $position = $_POST["position"];
     $sql = "INSERT INTO joueur (nom, numero, position) VALUES (:nom, :numero, :position)";
     $statement = $connection->prepare($sql);
-    if($statement->execute([":nom" => $nom, ":numero" => $numero, ":position" => $position])) {
+    if($statement->execute(
+        [
+            ":nom" => $nom, 
+            ":numero" => $numero, 
+            ":position" => $position
+        ]
+        )) {
         $message = "Joueur ajouté avec succès";
     }
 }

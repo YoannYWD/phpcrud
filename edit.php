@@ -5,6 +5,27 @@ $id = $_GET["id"];
 $statement = $connection->prepare($sql);
 $statement->execute([":id" => $id]);
 $joueur = $statement->fetch(PDO::FETCH_OBJ);
+if (
+    isset($_POST["nom"]) &&
+    isset($_POST["numero"]) &&
+    isset($_POST["position"])
+) {
+    $nom = $_POST["nom"];
+    $numero = $_POST["numero"];
+    $position = $_POST["position"];
+    $sql = "UPDATE joueur SET nom=:nom, numero=:numero, position=:position WHERE id=:id";
+    $statement = $connection->prepare($sql);
+    if ($statement->execute(
+        [
+            ":nom" => $nom,
+            ":numero" => $numero,
+            ":position" => $position,
+            ":id" => $id
+        ]
+        )) {
+            header("Location: /phpcrud");
+    }
+}
 ?>
 
 
